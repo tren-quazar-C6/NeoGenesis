@@ -1,0 +1,21 @@
+# Build results
+bin/
+obj/
+
+# Rider IDE files
+.idea/
+
+# User-specific settings
+*.user
+*.suo
+
+# VS files if anyone opens it in Visual Studio
+.vs/
+
+# NuGet packages
+packages/
+*.nupkg
+
+# OS files
+.DS_Store
+Thumbs.db
