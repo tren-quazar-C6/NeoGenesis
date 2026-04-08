@@ -46,4 +46,11 @@ public class Query
             .Where(d => d.Age > age)
             .ToList();
     }
+    
+    public List<Dinosaur> GetDinosaursByType(List<Dinosaur> dinosaurs, string type)
+    {
+        return dinosaurs
+            .Where(d => d.Type == type)
+            .ToList();
+    }
 }

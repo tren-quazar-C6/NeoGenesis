@@ -130,5 +130,10 @@ public class QueryService
     {
         return _query.GetDinosaursByAge(dinosaurs, age);
     }
+    
+    public List<Dinosaur> GetDinosaursByType(string type)
+    {
+        return _query.GetDinosaursByType(dinosaurs, type);
+    }
 }
 

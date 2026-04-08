@@ -107,7 +107,37 @@ void QueryMethod(string queryOpt)
             
             break;
         case "7":
+            Console.Clear();
+            Console.WriteLine($"--- Dinosaurs Types ---" +
+                              $"\n1. Herbivore" +
+                              $"\n2. Carnivore");
+
+            Console.Write("Choose a type (1 - 2): ");
+            string typeOpt = Console.ReadLine();
+            string dinoType;
+
+            switch (typeOpt)
+            {
+                case "1":
+                    dinoType = "Herbivore";
+                    break;
+                case "2":
+                    dinoType = "Carnivore";
+                    break;
+                default:
+                    helpers.InputErrorHandler(typeOpt);
+                    Console.Clear();
+                    return;  
+            }
             
+            List<Dinosaur> dinosaursByType = queryService.GetDinosaursByType(dinoType);
+
+            Console.Clear();
+            Console.WriteLine($"Dinosaurs listed by type: {dinoType}\n");
+
+            helpers.ShowDinosaurs(dinosaursByType);
+
+            helpers.Hold();
             break;
         case "8":
             
