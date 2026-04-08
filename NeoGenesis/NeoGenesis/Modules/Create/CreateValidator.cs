@@ -14,21 +14,21 @@ public class CreateValidator
     /// o el mensaje de error si algo falla.
     /// </summary>
     public string? Validate(
-        string dino_name, string dino_especie,
-        string sobre_nombre,  string register_code,
+        string dinoName, string dinoEspecie,
+        string sobreNombre,  string registerCode,
         int?   age)
     {
         // 1. Campos obligatorios
-        if (string.IsNullOrWhiteSpace(dino_name))
+        if (string.IsNullOrWhiteSpace(dinoName))
             return "El nombre es obligatorio.";
 
-        if (string.IsNullOrWhiteSpace(dino_especie))
+        if (string.IsNullOrWhiteSpace(dinoEspecie))
             return "La especie es obligatoria.";
 
-        if (string.IsNullOrWhiteSpace(sobre_nombre))
+        if (string.IsNullOrWhiteSpace(sobreNombre))
             return "El identificador es obligatorio.";
 
-        if (string.IsNullOrWhiteSpace(register_code))
+        if (string.IsNullOrWhiteSpace(registerCode))
             return "El código de registro es obligatorio.";
 
 
@@ -37,14 +37,14 @@ public class CreateValidator
             return "La edad debe ser mayor o igual a 0.";
 
         // 4. Username único
-        bool sobre_nombreExists = _db.Dinosaurs.Any(d => d.Sobre_nombre == sobre_nombre);
-        if (sobre_nombreExists)
-            return $"El identificador '{sobre_nombre}' ya está registrado en el sistema.";
+        bool sobreNombreExists = _db.Dinosaurs.Any(d => d.SobreNombre == sobreNombre);
+        if (sobreNombreExists)
+            return $"El identificador '{sobreNombre}' ya está registrado en el sistema.";
 
         // 5. Email único
-        bool register_codeExists = _db.Dinosaurs.Any(d => d.Register_code == register_code);
-        if (register_codeExists)
-            return $"El código de registro '{register_code}' ya existe en el sistema.";
+        bool registerCodeExists = _db.Dinosaurs.Any(d => d.RegisterCode == registerCode);
+        if (registerCodeExists)
+            return $"El código de registro '{registerCode}' ya existe en el sistema.";
 
         return null; // Sin errores
     }

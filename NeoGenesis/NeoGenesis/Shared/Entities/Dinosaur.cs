@@ -5,10 +5,10 @@ public class Dinosaur
     public int Id { get; set; }
 
     // Obligatorios
-    public string Dino_name { get; set; } = string.Empty;   // Nombre asignado
-    public string Dino_especie  { get; set; } = string.Empty;   // Especie / clasificación
-    public string Sobre_nombre  { get; set; } = string.Empty;   // Identificador único
-    public string Register_code { get; set; } = string.Empty;   // Código de registro
+    public string DinoName { get; set; } = string.Empty;   // Nombre asignado
+    public string DinoEspecie  { get; set; } = string.Empty;   // Especie / clasificación
+    public string SobreNombre  { get; set; } = string.Empty;   // Identificador único
+    public string RegisterCode { get; set; } = string.Empty;   // Código de registro
 
     // Opcionales
     public string? Phone    { get; set; }   // Dispositivo de rastreo

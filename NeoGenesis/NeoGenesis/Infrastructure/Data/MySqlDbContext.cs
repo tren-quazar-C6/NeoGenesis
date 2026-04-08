@@ -15,13 +15,13 @@ public class MySqlDbContext : DbContext
         {
             entity.HasKey(d => d.Id);
 
-            entity.Property(d => d.Dino_name).IsRequired().HasMaxLength(100);
-            entity.Property(d => d.Dino_especie).IsRequired().HasMaxLength(100);
-            entity.Property(d => d.Sobre_nombre).IsRequired().HasMaxLength(50);
-            entity.Property(d => d.Register_code).IsRequired().HasMaxLength(150);
+            entity.Property(d => d.DinoName).IsRequired().HasMaxLength(100);
+            entity.Property(d => d.DinoEspecie).IsRequired().HasMaxLength(100);
+            entity.Property(d => d.SobreNombre).IsRequired().HasMaxLength(50);
+            entity.Property(d => d.RegisterCode).IsRequired().HasMaxLength(150);
 
-            entity.HasIndex(d => d.Sobre_nombre).IsUnique();
-            entity.HasIndex(d => d.Register_code).IsUnique();
+            entity.HasIndex(d => d.SobreNombre).IsUnique();
+            entity.HasIndex(d => d.RegisterCode).IsUnique();
         });
     }
 }

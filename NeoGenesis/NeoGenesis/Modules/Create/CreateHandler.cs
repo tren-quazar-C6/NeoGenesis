@@ -27,16 +27,16 @@ public class CreateHandler
 
         // ── Campos obligatorios ──────────────────────────────────────
         Console.Write("Nombre asignado al dinosaurio : ");
-        string dino_name = Console.ReadLine()?.Trim() ?? string.Empty;
+        string dinoName = Console.ReadLine()?.Trim() ?? string.Empty;
 
         Console.Write("Especie / Clasificación : ");
-        string dino_especie = Console.ReadLine()?.Trim() ?? string.Empty;
+        string dinoEspecie = Console.ReadLine()?.Trim() ?? string.Empty;
 
         Console.Write("Identificador único (sobre_nombre) : ");
-        string sobre_nombre = Console.ReadLine()?.Trim() ?? string.Empty;
+        string sobreNombre = Console.ReadLine()?.Trim() ?? string.Empty;
 
         Console.Write("Código de registro (nombre_sobreNombre) : ");
-        string register_code = Console.ReadLine()?.Trim() ?? string.Empty;
+        string registerCode = Console.ReadLine()?.Trim() ?? string.Empty;
 
         // ── Campos opcionales ────────────────────────────────────────
         Console.WriteLine("\n── Datos opcionales (Enter para omitir) ──");
@@ -66,7 +66,7 @@ public class CreateHandler
         if (string.IsNullOrWhiteSpace(address)) address = null;
 
         // ── Validación ───────────────────────────────────────────────
-        string? error = _validator.Validate(dino_name, dino_especie, sobre_nombre, register_code, age);
+        string? error = _validator.Validate(dinoName, dinoEspecie, sobreNombre, registerCode, age);
 
         if (error is not null)
         {
@@ -79,12 +79,12 @@ public class CreateHandler
         // ── Construcción del objeto ──────────────────────────────────
         var dinosaur = new Dinosaur
         {
-            Dino_name = dino_name,
-            Dino_especie  = dino_especie,
-            Sobre_nombre  = sobre_nombre,
-            Register_code = register_code,
-            Age       = age,
-            Type      = type,
+            DinoName = dinoName,
+            DinoEspecie = dinoEspecie,
+            SobreNombre = sobreNombre,
+            RegisterCode = registerCode,
+            Age = age,
+            Type = type,
             Zone      = zone,
             Sector    = sector,
             Phone     = phone,
