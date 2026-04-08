@@ -53,4 +53,5 @@ public class Query
             .Where(d => d.Type == type)
             .ToList();
     }
+    
 }

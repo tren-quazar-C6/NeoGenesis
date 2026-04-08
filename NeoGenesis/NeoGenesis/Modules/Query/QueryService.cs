@@ -12,7 +12,7 @@ public class QueryService
             Id = 1,
             Username = "trex01",
             Name = "Rex",
-            Email = "trex01@neogenesis.com",
+            RegisterCode = "trex01",
             Species = "Tyrannosaurus",
             Age = 12,
             Type = "Carnivore",
@@ -29,7 +29,7 @@ public class QueryService
             Id = 2,
             Username = "raptor02",
             Name = "Blue",
-            Email = "raptor02@neogenesis.com",
+            RegisterCode = "raptor02",
             Species = "Velociraptor",
             Age = 8,
             Type = "Carnivore",
@@ -46,7 +46,7 @@ public class QueryService
             Id = 3,
             Username = "trice03",
             Name = "Tri",
-            Email = "trice03@neogenesis.com",
+            RegisterCode = "trice03",
             Species = "Triceratops",
             Age = 15,
             Type = "Herbivore",
@@ -63,7 +63,7 @@ public class QueryService
             Id = 4,
             Username = "brachio04",
             Name = "Longneck",
-            Email = "brachio04@neogenesis.com",
+            RegisterCode = "brachio04",
             Species = "Brachiosaurus",
             Age = 25,
             Type = "Herbivore",
@@ -80,7 +80,7 @@ public class QueryService
             Id = 5,
             Username = "spino05",
             Name = "Spike",
-            Email = "spino05@neogenesis.com",
+            RegisterCode = "spino05",
             Species = "Spinosaurus",
             Age = 18,
             Type = "Carnivore",
@@ -134,6 +134,14 @@ public class QueryService
     public List<Dinosaur> GetDinosaursByType(string type)
     {
         return _query.GetDinosaursByType(dinosaurs, type);
+    }
+    
+    public List<string> GetDinosaursForReports()
+    {
+        var all = _query.GetAllDinosaurs(dinosaurs);
+        return all
+            .Select(d => $"{d.Name.PadRight(20)}{d.RegisterCode.PadRight(15)}")
+            .ToList();
     }
 }
 

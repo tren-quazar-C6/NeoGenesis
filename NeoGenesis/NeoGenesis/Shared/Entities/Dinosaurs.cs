@@ -6,7 +6,7 @@ public class Dinosaur
     public int Id { get; set; }
     public string Username { get; set; }
     public string Name { get; set; }
-    public string Email { get; set; }
+    public string RegisterCode { get; set; }
     public string Species { get; set; }
     public int Age { get; set; }
     public string Type { get; set; }

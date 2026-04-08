@@ -140,7 +140,10 @@ void QueryMethod(string queryOpt)
             helpers.Hold();
             break;
         case "8":
-            
+            Console.Clear();
+            List<string> dinosaursForReports = queryService.GetDinosaursForReports();
+            helpers.ShowDinosaursforReports(dinosaursForReports);
+            helpers.Hold();
             break;
         case "9":
             
@@ -184,12 +187,12 @@ string LINQMenu = @"--- CONSULT DINOSAURS ---" +
 
                     "\n1. List all dinosaurs" +
                     "\n2. Get dinosaur by Id" +
-                    "\n3. Get dinosaur by Email" +
+                    "\n3. Get dinosaur by Register Code" +
                     "\n4. Filter by Zone" +
                     "\n5. Filter by Sector" +
                     "\n6. Filter by Age" +
                     "\n7. Filter by Type" +
-                    "\n8. Show Name + Email" +
+                    "\n8. Show Name + Register Code" +
                     "\n9. Order by Creation Date" +
                     "\n10. Order by Species" +
                     "\n11. Count total dinosaurs" +

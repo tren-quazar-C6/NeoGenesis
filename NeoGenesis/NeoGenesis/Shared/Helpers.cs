@@ -49,4 +49,24 @@ public class Helpers
 
         Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
     }
+    
+    public void ShowDinosaursforReports(List<string> dinosaurs)
+    {
+        // var projected = dinosaurs
+        //     .Select(d => new { d.Name, d.RegisterCode })
+        //     .ToList();
+
+        Console.WriteLine("Name".PadRight(20) + "Code".PadRight(15));
+        Console.WriteLine("----------------------------------------");
+
+        foreach (var d in dinosaurs)
+        {
+            Console.WriteLine(d);
+            // Console.Write(d.Name.PadRight(25));
+            // Console.WriteLine(d.RegisterCode.PadRight(15));
+        }
+
+        Console.WriteLine("----------------------------------------");
+        Console.WriteLine($"Total: {dinosaurs.Count}");
+    }
 }
