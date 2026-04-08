@@ -115,5 +115,15 @@ public class QueryService
     {
         return _query.GetZones(dinosaurs);
     }
+    
+    public List<Dinosaur> GetDinosaursBySector(string sector)
+    {
+        return _query.GetDinosaursBySector(dinosaurs, sector);
+    }
+    
+    public List<string> GetSectors()
+    {
+        return _query.GetSectors(dinosaurs);
+    }
 }
 

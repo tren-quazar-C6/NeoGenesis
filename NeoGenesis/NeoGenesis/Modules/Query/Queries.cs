@@ -27,4 +27,16 @@ public class Query
     {
         return dinosaurs.Select(x => x.Zone).Distinct().ToList();
     }
+    
+    public List<Dinosaur> GetDinosaursBySector(List<Dinosaur> dinosaurs, string sector)
+    {
+        return dinosaurs
+            .Where(d => d.Sector == sector)
+            .ToList();
+    }
+    
+    public List<string> GetSectors(List<Dinosaur> dinosaurs)
+    {
+        return dinosaurs.Select(x => x.Sector).Distinct().ToList();
+    }
 }

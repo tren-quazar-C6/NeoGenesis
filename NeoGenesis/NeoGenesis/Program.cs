@@ -94,7 +94,30 @@ void QueryMethod(string queryOpt)
             helpers.Hold();
             break;
         case "5":
+            Console.Clear();
+            List<string> sectors = queryService.GetSectors();
+            Console.WriteLine("--- Registered Sectors ---");
+            cont = 1;
             
+            foreach (var s in sectors)
+            {
+                Console.WriteLine(cont + ". " + s);
+                cont++;
+            }
+            
+            Console.Write($"Choose a sector (1 - {cont-1}):");
+            int sectorOpt = int.Parse(Console.ReadLine());
+            List<Dinosaur> res = queryService.GetDinosaursBySector(sectors[sectorOpt-1]);
+            
+            Console.Clear();
+            Console.WriteLine($"Dinosaurs in {sectors[sectorOpt-1]} sector:\n");
+            
+            foreach (var d in res)
+            {
+                Console.WriteLine($"Name: {d.Name} | Species: {d.Species} | Email: {d.Email}");
+            }
+
+            helpers.Hold();
             break;
         case "6":
             
