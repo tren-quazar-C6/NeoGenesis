@@ -9,6 +9,13 @@ public class Query
         return dinosaurs.ToList();
     }
     
+    public List<Dinosaur> GetDinosaurById(List<Dinosaur> dinosaurs, int id)
+    {
+        return dinosaurs
+            .Where(d => d.Id == id)
+            .ToList();
+    }
+    
     public List<Dinosaur> GetDinosaursByZone(List<Dinosaur> dinosaurs, string zone)
     {
         return dinosaurs

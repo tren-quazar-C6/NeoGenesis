@@ -26,6 +26,42 @@ void QueryMethod(string queryOpt)
             helpers.Hold();
             break;
         case "2":
+            Console.Clear();
+            List<Dinosaur> dinos = queryService.GetAllDinosaurs();
+            Console.WriteLine("Id".PadRight(5) + "Username".PadRight(20) + "Species".PadRight(20));
+            Console.WriteLine("---------------------------------------------------");
+            
+            foreach (var d in dinos)
+            {
+                Console.Write(d.Id.ToString().PadRight(5));
+                Console.Write(d.Username.PadRight(20));
+                Console.WriteLine(d.Species.PadRight(20) );
+            }
+            Console.WriteLine("---------------------------------------------------");
+            
+            Console.Write("Type the Dinosaur Id:");
+            int dinoId = int.Parse(Console.ReadLine());
+            List<Dinosaur> dino = queryService.GetDinosaurById(dinoId);
+            Console.Clear();
+            
+            Console.WriteLine("Id".PadRight(5) + "Username".PadRight(20) + "Age".PadRight(8) + "Type".PadRight(12) + "Zone".PadRight(10) + "Sector".PadRight(10) + "Tracknumber".PadRight(20) + "CreatedAt".PadRight(10));
+            Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
+
+            foreach (var d in dino)
+            {
+                Console.Write(d.Id.ToString().PadRight(5));
+                Console.Write(d.Username.PadRight(20));
+                Console.Write(d.Age.ToString().PadRight(8));
+                Console.Write(d.Type.PadRight(12));
+                Console.Write(d.Zone.PadRight(10));
+                Console.Write(d.Sector.PadRight(10));
+                Console.Write(d.TrackNumber.PadRight(20));
+                Console.WriteLine(d.CreatedAt.ToString().PadRight(10));
+            }
+
+            Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
+
+            helpers.Hold();
             
             break;
         case "3":

@@ -101,6 +101,11 @@ public class QueryService
         return _query.GetAllDinosaurs(dinosaurs);
     }
     
+    public List<Dinosaur> GetDinosaurById(int id)
+    {
+        return _query.GetDinosaurById(dinosaurs, id);
+    }
+    
     public List<Dinosaur> GetDinosaursByZone(string zone)
     {
         return _query.GetDinosaursByZone(dinosaurs, zone);
