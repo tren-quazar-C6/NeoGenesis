@@ -11,6 +11,12 @@ void QueryMethod(string queryOpt)
     {
         case "1":
             Console.Clear();
+            List<Dinosaur> dinosaursAll = queryService.GetAllDinosaurs();
+            helpers.ShowDinosaurs(dinosaursAll);
+            helpers.Hold();
+            break;
+        case "2":
+            Console.Clear();
             List<Dinosaur> dinosaurs = queryService.GetAllDinosaurs();
             Console.WriteLine("Id".PadRight(5) + "Username".PadRight(20) + "Species".PadRight(20));
             Console.WriteLine("---------------------------------------------------");
@@ -22,44 +28,13 @@ void QueryMethod(string queryOpt)
                 Console.WriteLine(d.Species.PadRight(20) );
             }
             Console.WriteLine("---------------------------------------------------");
-
-            helpers.Hold();
-            break;
-        case "2":
-            Console.Clear();
-            List<Dinosaur> dinos = queryService.GetAllDinosaurs();
-            Console.WriteLine("Id".PadRight(5) + "Username".PadRight(20) + "Species".PadRight(20));
-            Console.WriteLine("---------------------------------------------------");
-            
-            foreach (var d in dinos)
-            {
-                Console.Write(d.Id.ToString().PadRight(5));
-                Console.Write(d.Username.PadRight(20));
-                Console.WriteLine(d.Species.PadRight(20) );
-            }
-            Console.WriteLine("---------------------------------------------------");
             
             Console.Write("Type the Dinosaur Id:");
             int dinoId = int.Parse(Console.ReadLine());
-            List<Dinosaur> dino = queryService.GetDinosaurById(dinoId);
+            List<Dinosaur> dinosaurById = queryService.GetDinosaurById(dinoId);
             Console.Clear();
             
-            Console.WriteLine("Id".PadRight(5) + "Username".PadRight(20) + "Age".PadRight(8) + "Type".PadRight(12) + "Zone".PadRight(10) + "Sector".PadRight(10) + "Tracknumber".PadRight(20) + "CreatedAt".PadRight(10));
-            Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
-
-            foreach (var d in dino)
-            {
-                Console.Write(d.Id.ToString().PadRight(5));
-                Console.Write(d.Username.PadRight(20));
-                Console.Write(d.Age.ToString().PadRight(8));
-                Console.Write(d.Type.PadRight(12));
-                Console.Write(d.Zone.PadRight(10));
-                Console.Write(d.Sector.PadRight(10));
-                Console.Write(d.TrackNumber.PadRight(20));
-                Console.WriteLine(d.CreatedAt.ToString().PadRight(10));
-            }
-
-            Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
+            helpers.ShowDinosaurs(dinosaurById);
 
             helpers.Hold();
             
@@ -81,16 +56,13 @@ void QueryMethod(string queryOpt)
             
             Console.Write($"Choose a zone (1 - {cont-1}):");
             int zoneOpt = int.Parse(Console.ReadLine());
-            List<Dinosaur> result = queryService.GetDinosaursByZone(zones[zoneOpt-1]);
+            List<Dinosaur> dinosaursByZone = queryService.GetDinosaursByZone(zones[zoneOpt-1]);
             
             Console.Clear();
             Console.WriteLine($"Dinosaurs in {zones[zoneOpt-1]} zone:\n");
             
-            foreach (var d in result)
-            {
-                Console.WriteLine($"Name: {d.Name} | Species: {d.Species} | Email: {d.Email}");
-            }
-
+            helpers.ShowDinosaurs(dinosaursByZone);
+            
             helpers.Hold();
             break;
         case "5":
@@ -107,19 +79,31 @@ void QueryMethod(string queryOpt)
             
             Console.Write($"Choose a sector (1 - {cont-1}):");
             int sectorOpt = int.Parse(Console.ReadLine());
-            List<Dinosaur> res = queryService.GetDinosaursBySector(sectors[sectorOpt-1]);
+            List<Dinosaur> dinosaursBySector = queryService.GetDinosaursBySector(sectors[sectorOpt-1]);
             
             Console.Clear();
             Console.WriteLine($"Dinosaurs in {sectors[sectorOpt-1]} sector:\n");
             
-            foreach (var d in res)
-            {
-                Console.WriteLine($"Name: {d.Name} | Species: {d.Species} | Email: {d.Email}");
-            }
+            helpers.ShowDinosaurs(dinosaursBySector);
 
             helpers.Hold();
             break;
         case "6":
+            Console.Clear();
+            Console.WriteLine("Filter dinosaurs bigger than the input age \n");
+            Console.Write("\nAge: ");
+            string inputAge = Console.ReadLine();
+            int? age = helpers.IntValidation(inputAge);
+            helpers.InputErrorHandler(age);
+            
+            List<Dinosaur> dinosaursAge = queryService.GetDinosaursByAge(age);
+            
+            Console.Clear();
+            Console.WriteLine($"Dinosaurs bigger than {age} years:\n");
+            
+            helpers.ShowDinosaurs(dinosaursAge);
+
+            helpers.Hold();
             
             break;
         case "7":

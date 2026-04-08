@@ -39,4 +39,11 @@ public class Query
     {
         return dinosaurs.Select(x => x.Sector).Distinct().ToList();
     }
+    
+    public List<Dinosaur> GetDinosaursByAge(List<Dinosaur> dinosaurs, int? age)
+    {
+        return dinosaurs
+            .Where(d => d.Age > age)
+            .ToList();
+    }
 }

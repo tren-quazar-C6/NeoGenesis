@@ -125,5 +125,10 @@ public class QueryService
     {
         return _query.GetSectors(dinosaurs);
     }
+    
+    public List<Dinosaur> GetDinosaursByAge(int? age)
+    {
+        return _query.GetDinosaursByAge(dinosaurs, age);
+    }
 }
 
