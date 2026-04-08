@@ -4,6 +4,11 @@ using NeoGenesis.Entities;
 
 public class Query
 {
+    public List<Dinosaur> GetAllDinosaurs(List<Dinosaur> dinosaurs)
+    {
+        return dinosaurs.ToList();
+    }
+    
     public List<Dinosaur> GetDinosaursByZone(List<Dinosaur> dinosaurs, string zone)
     {
         return dinosaurs

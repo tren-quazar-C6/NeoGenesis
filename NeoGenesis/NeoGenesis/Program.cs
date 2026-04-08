@@ -6,10 +6,24 @@ Helpers helpers = new Helpers();
 
 void QueryMethod(string queryOpt)
 {
+    QueryService queryService = new QueryService();
     switch (queryOpt)
     {
         case "1":
- 
+            Console.Clear();
+            List<Dinosaur> dinosaurs = queryService.GetAllDinosaurs();
+            Console.WriteLine("Id".PadRight(5) + "Username".PadRight(20) + "Species".PadRight(20));
+            Console.WriteLine("---------------------------------------------------");
+            
+            foreach (var d in dinosaurs)
+            {
+                Console.Write(d.Id.ToString().PadRight(5));
+                Console.Write(d.Username.PadRight(20));
+                Console.WriteLine(d.Species.PadRight(20) );
+            }
+            Console.WriteLine("---------------------------------------------------");
+
+            helpers.Hold();
             break;
         case "2":
             
@@ -19,7 +33,6 @@ void QueryMethod(string queryOpt)
             break;
         case "4":
             Console.Clear();
-            QueryService queryService = new QueryService();
             List<string> zones = queryService.GetZones();
             Console.WriteLine("--- Registered Zones ---");
             int cont = 1;

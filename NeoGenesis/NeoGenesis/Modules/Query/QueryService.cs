@@ -96,6 +96,11 @@ public class QueryService
     
     private Query _query = new Query();
 
+    public List<Dinosaur> GetAllDinosaurs()
+    {
+        return _query.GetAllDinosaurs(dinosaurs);
+    }
+    
     public List<Dinosaur> GetDinosaursByZone(string zone)
     {
         return _query.GetDinosaursByZone(dinosaurs, zone);
