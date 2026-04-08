@@ -7,21 +7,24 @@ Helpers helpers = new Helpers();
 void QueryMethod(string queryOpt)
 {
     QueryService queryService = new QueryService();
+    List<string> zones = queryService.GetZones();
+    List<Dinosaur> dinosaursAll = queryService.GetAllDinosaurs();
+    int cont = 0;
+    int zoneOpt = 0;
+    
     switch (queryOpt)
     {
         case "1":
             Console.Clear();
-            List<Dinosaur> dinosaursAll = queryService.GetAllDinosaurs();
             helpers.ShowDinosaurs(dinosaursAll);
             helpers.Hold();
             break;
         case "2":
             Console.Clear();
-            List<Dinosaur> dinosaurs = queryService.GetAllDinosaurs();
             Console.WriteLine("Id".PadRight(5) + "Username".PadRight(20) + "Species".PadRight(20));
             Console.WriteLine("---------------------------------------------------");
             
-            foreach (var d in dinosaurs)
+            foreach (var d in dinosaursAll)
             {
                 Console.Write(d.Id.ToString().PadRight(5));
                 Console.Write(d.Username.PadRight(20));
@@ -44,9 +47,8 @@ void QueryMethod(string queryOpt)
             break;
         case "4":
             Console.Clear();
-            List<string> zones = queryService.GetZones();
             Console.WriteLine("--- Registered Zones ---");
-            int cont = 1;
+            cont = 1;
             
             foreach (var z in zones)
             {
@@ -55,7 +57,7 @@ void QueryMethod(string queryOpt)
             }
             
             Console.Write($"Choose a zone (1 - {cont-1}):");
-            int zoneOpt = int.Parse(Console.ReadLine());
+            zoneOpt = int.Parse(Console.ReadLine());
             List<Dinosaur> dinosaursByZone = queryService.GetDinosaursByZone(zones[zoneOpt-1]);
             
             Console.Clear();
@@ -146,16 +148,39 @@ void QueryMethod(string queryOpt)
             helpers.Hold();
             break;
         case "9":
-            
+
             break;
         case "10":
             
             break;
         case "11":
-            
+            Console.Clear();
+            Console.WriteLine("--- Dinosaur Count ---\n");
+            helpers.CountDinosaurs(dinosaursAll);
+            helpers.Hold();
             break;
         case "12":
+            Console.Clear();
             
+            Console.WriteLine("--- Registered Zones ---");
+            cont = 1;
+            
+            foreach (var z in zones)
+            {
+                Console.WriteLine(cont + ". " + z);
+                cont++;
+            }
+            
+            Console.Write($"Choose a zone (1 - {cont-1}):");
+            zoneOpt = int.Parse(Console.ReadLine());
+            List<Dinosaur> dinosaursByZoneToCount = queryService.GetDinosaursByZone(zones[zoneOpt-1]);
+            
+            Console.Clear();
+            Console.WriteLine($"Dinosaurs in {zones[zoneOpt-1]} zone:\n");
+            
+            helpers.CountDinosaurs(dinosaursByZoneToCount);
+            
+            helpers.Hold();
             break;
         case "13":
             
