@@ -23,10 +23,12 @@ void QueryMethod(string queryOpt)
     QueryService queryService = new QueryService();
     List<string> codes = queryService.GetCodes();
     List<string> zones = queryService.GetZones();
+    List<string> sectors = queryService.GetSectors();
     
     List<Dinosaur> dinosaursAll = queryService.GetAllDinosaurs();
     int cont = 0;
     int zoneOpt = 0;
+    int sectorOpt = 0;
 
     switch (queryOpt)
     {
@@ -83,12 +85,11 @@ void QueryMethod(string queryOpt)
             break;
         case "5":
             Console.Clear();
-            List<string> sectors = queryService.GetSectors();
             Console.WriteLine("--- Registered Sectors ---");
             cont = 1;
             foreach (var s in sectors) { Console.WriteLine(cont + ". " + s); cont++; }
             Console.Write($"Choose a sector (1 - {cont - 1}): ");
-            int sectorOpt = int.Parse(Console.ReadLine());
+            sectorOpt = int.Parse(Console.ReadLine());
             List<Dinosaur> dinosaursBySector = queryService.GetDinosaursBySector(sectors[sectorOpt - 1]);
             Console.Clear();
             Console.WriteLine($"Dinosaurs in {sectors[sectorOpt - 1]} sector:\n");
@@ -155,7 +156,17 @@ void QueryMethod(string queryOpt)
             helpers.Hold();
             break;
         case "11":
-
+            Console.Clear();
+            Console.WriteLine("--- Registered Sectors ---");
+            cont = 1;
+            foreach (var s in sectors) { Console.WriteLine(cont + ". " + s); cont++; }
+            Console.Write($"Choose a sector (1 - {cont - 1}): ");
+            sectorOpt = int.Parse(Console.ReadLine());
+            List<Dinosaur> dinosaursBySectorToCount = queryService.GetDinosaursBySector(sectors[sectorOpt - 1]);
+            Console.Clear();
+            Console.WriteLine($"Dinosaurs in {sectors[sectorOpt - 1]} sector:\n");
+            helpers.CountDinosaurs(dinosaursBySectorToCount);
+            helpers.Hold();
             break;
         case "12":
             
