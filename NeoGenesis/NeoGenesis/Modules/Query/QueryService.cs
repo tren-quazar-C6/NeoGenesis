@@ -18,7 +18,7 @@ public class QueryService
             Type = "Carnivore",
             Zone = "North",
             Sector = "A",
-            Address = "Zone A1",
+            Address = null,
             TrackNumber = "TRK-001",
             Password = "hash1",
             CreatedAt = DateTime.Now.AddDays(-10),
@@ -36,7 +36,7 @@ public class QueryService
             Zone = "East",
             Sector = "B",
             Address = "Zone B2",
-            TrackNumber = "TRK-002",
+            TrackNumber = null,
             Password = "hash2",
             CreatedAt = DateTime.Now.AddDays(-5),
             UpdatedAt = DateTime.Now.AddDays(-2)
@@ -69,8 +69,8 @@ public class QueryService
             Type = "Herbivore",
             Zone = "West",
             Sector = "C",
-            Address = "Zone C3",
-            TrackNumber = "TRK-004",
+            Address = null,
+            TrackNumber = null,
             Password = "hash4",
             CreatedAt = DateTime.Now.AddDays(-2),
             UpdatedAt = DateTime.Now.AddDays(-1)
@@ -141,6 +141,14 @@ public class QueryService
         var all = _query.GetAllDinosaurs(dinosaurs);
         return all
             .Select(d => $"{d.DinoName.PadRight(20)}{d.RegisterCode.PadRight(15)}")
+            .ToList();
+    }
+    
+    public List<Dinosaur> OrderByCreationDate()
+    {
+        var all = _query.GetAllDinosaurs(dinosaurs);
+        return all
+            .OrderBy(d => d.CreatedAt)
             .ToList();
     }
 }

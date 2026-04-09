@@ -121,7 +121,12 @@ void QueryMethod(string queryOpt)
             helpers.ShowDinosaursforReports(dinosaursForReports);
             helpers.Hold();
             break;
-        case "9":  break;
+        case "9":  
+            Console.Clear();
+            List<Dinosaur> orderedDinosaurs = queryService.OrderByCreationDate();
+            helpers.ShowDinosaurs(orderedDinosaurs);
+            helpers.Hold();
+            break;
         case "10": break;
         case "11":
             Console.Clear();
@@ -152,7 +157,7 @@ void QueryMethod(string queryOpt)
 
 // ── Menus ───────────────────────────────────────────────────────
 string mainMenu = "╔══════════════════════════════════════╗" +
-                "\n║        NEOGENESIS PARK — MENÚ        ║" +
+                "\n║        NEOGENESIS PARK — MENU        ║" +
                 "\n╚══════════════════════════════════════╝" +
                   "\n1. Register Dinosaur" +
                   "\n2. Update Dinosaur" +

@@ -41,14 +41,16 @@ public class Helpers
 
         foreach (var d in dinosaurs)
         {
-            Console.Write(d.Id.ToString().PadRight(5));
-            Console.Write(d.Username.PadRight(20));
-            Console.Write(d.Age.ToString().PadRight(8));
-            Console.Write(d.Type.PadRight(12));
-            Console.Write(d.Zone.PadRight(10));
-            Console.Write(d.Sector.PadRight(10));
-            Console.Write(d.TrackNumber.PadRight(20));
-            Console.WriteLine(d.CreatedAt.ToString().PadRight(10));
+            Console.WriteLine(
+                $"{d.Id.ToString(), -5}" +
+                $"{d.Username, -20}" +
+                $"{d.Age.ToString() ?? "N/A", -8}" +
+                $"{d.Type ?? "N/A", -12}" +
+                $"{d.Zone ?? "N/A", -10}" +
+                $"{d.Sector ?? "N/A", -10}" +
+                $"{d.TrackNumber ?? "N/A", -20}" +
+                $"{d.CreatedAt.ToString(), -10}" 
+                );
         }
 
         Console.WriteLine(
