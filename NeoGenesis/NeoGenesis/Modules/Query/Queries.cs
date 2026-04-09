@@ -80,4 +80,11 @@ public class Query
             .ToList();
     }
     
+    public List<Dinosaur> OrderDinosaursBySpecies(List<Dinosaur> dinosaurs)
+    {
+        return dinosaurs
+            .OrderBy(d => d.DinoSpecies)
+            .ToList();
+    }
+    
 }

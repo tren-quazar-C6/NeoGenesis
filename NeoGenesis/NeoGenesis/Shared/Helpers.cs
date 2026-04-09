@@ -33,29 +33,30 @@ public class Helpers
 
     public void ShowDinosaurs(List<Dinosaur> dinosaurs)
     {
-        Console.WriteLine("Id".PadRight(5) + "Username".PadRight(20) + "Age".PadRight(8) + "Type".PadRight(12) +
-                          "Zone".PadRight(10) + "Sector".PadRight(10) + "Tracknumber".PadRight(20) + "Address".PadRight(20) +
+        Console.WriteLine("Id".PadRight(5) + "Username".PadRight(15) + "Species".PadRight(20) + "Age".PadRight(6) + "Type".PadRight(12) +
+                          "Zone".PadRight(10) + "Sector".PadRight(10) + "Tracknumber".PadRight(15) + "Address".PadRight(12) +
                           "CreatedAt".PadRight(10));
         Console.WriteLine(
-            "-----------------------------------------------------------------------------------------------------------");
+            "----------------------------------------------------------------------------------------------------------------------------------");
 
         foreach (var d in dinosaurs)
         {
             Console.WriteLine(
                 $"{d.Id.ToString(), -5}" +
-                $"{d.Username, -20}" +
-                $"{d.Age.ToString() ?? "N/A", -8}" +
+                $"{d.Username, -15}" +
+                $"{d.DinoSpecies, -20}" +
+                $"{d.Age.ToString() ?? "N/A", -6}" +
                 $"{d.Type ?? "N/A", -12}" +
                 $"{d.Zone ?? "N/A", -10}" +
                 $"{d.Sector ?? "N/A", -10}" +
-                $"{d.TrackNumber ?? "N/A", -20}" +
-                $"{d.Address ?? "N/A", -20}" +
+                $"{d.TrackNumber ?? "N/A", -15}" +
+                $"{d.Address ?? "N/A", -12}" +
                 $"{d.CreatedAt.ToString(), -10}" 
                 );
         }
 
         Console.WriteLine(
-            "-----------------------------------------------------------------------------------------------------------");
+            "----------------------------------------------------------------------------------------------------------------------------------");
     }
 
     public void ShowDinosaursforReports(List<string> dinosaurs)

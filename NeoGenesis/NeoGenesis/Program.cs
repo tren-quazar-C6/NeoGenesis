@@ -188,7 +188,13 @@ void QueryMethod(string queryOpt)
             helpers.ShowDinosaurs(orderedDinosaurs);
             helpers.Hold();
             break;
-        case "15": break;
+        case "15": 
+            Console.Clear();
+            Console.WriteLine("--- Dinosaurs Ordered by Species ---\n");
+            List<Dinosaur> dinosaursBySpecies = queryService.DinosaursBySpecies();
+            helpers.ShowDinosaurs(dinosaursBySpecies);
+            helpers.Hold();
+            break;
         case "0":  break;
     }
 }

@@ -171,5 +171,10 @@ public class QueryService
     {
         return _query.GetDinosaursWoAddress(dinosaurs);
     }
+    
+    public List<Dinosaur> DinosaursBySpecies()
+    {
+        return _query.OrderDinosaursBySpecies(dinosaurs);
+    }
 }
 
