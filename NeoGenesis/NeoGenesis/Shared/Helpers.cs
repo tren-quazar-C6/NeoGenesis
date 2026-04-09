@@ -1,4 +1,5 @@
 using NeoGenesis.Entities;
+    
 
 public class Helpers
 {
@@ -8,7 +9,7 @@ public class Helpers
         Console.ReadKey();
         Console.Clear();
     }
-    
+
     public int? IntValidation(string value)
     {
         int numericValue;
@@ -21,7 +22,7 @@ public class Helpers
             return null;
         }
     }
-    
+
     public void InputErrorHandler(dynamic value)
     {
         if (value == null)
@@ -32,8 +33,11 @@ public class Helpers
 
     public void ShowDinosaurs(List<Dinosaur> dinosaurs)
     {
-        Console.WriteLine("Id".PadRight(5) + "Username".PadRight(20) + "Age".PadRight(8) + "Type".PadRight(12) + "Zone".PadRight(10) + "Sector".PadRight(10) + "Tracknumber".PadRight(20) + "CreatedAt".PadRight(10));
-        Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
+        Console.WriteLine("Id".PadRight(5) + "Username".PadRight(20) + "Age".PadRight(8) + "Type".PadRight(12) +
+                          "Zone".PadRight(10) + "Sector".PadRight(10) + "Tracknumber".PadRight(20) +
+                          "CreatedAt".PadRight(10));
+        Console.WriteLine(
+            "-----------------------------------------------------------------------------------------------------------");
 
         foreach (var d in dinosaurs)
         {
@@ -47,12 +51,13 @@ public class Helpers
             Console.WriteLine(d.CreatedAt.ToString().PadRight(10));
         }
 
-        Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
+        Console.WriteLine(
+            "-----------------------------------------------------------------------------------------------------------");
     }
-    
+
     public void ShowDinosaursforReports(List<string> dinosaurs)
     {
-        
+
         Console.WriteLine("Name".PadRight(20) + "Code".PadRight(15));
         Console.WriteLine("----------------------------------------");
 
@@ -69,5 +74,25 @@ public class Helpers
     public void CountDinosaurs(List<Dinosaur> dinosaurs)
     {
         Console.WriteLine($"Total: {dinosaurs.Count}");
+    }
+    public static void PrintSuccess(string message)
+    {
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine($"\n✔ {message}");
+        Console.ResetColor();
+    }
+
+    public static void PrintError(string message)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine($"\n✖ {message}");
+        Console.ResetColor();
+    }
+
+    public static void PrintInfo(string message)
+    {
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine($"  {message}");
+        Console.ResetColor();
     }
 }

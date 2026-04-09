@@ -11,9 +11,9 @@ public class QueryService
         {
             Id = 1,
             Username = "trex01",
-            Name = "Rex",
+            DinoName = "Rex",
             RegisterCode = "trex01",
-            Species = "Tyrannosaurus",
+            DinoSpecies = "Tyrannosaurus",
             Age = 12,
             Type = "Carnivore",
             Zone = "North",
@@ -28,9 +28,9 @@ public class QueryService
         {
             Id = 2,
             Username = "raptor02",
-            Name = "Blue",
+            DinoName = "Blue",
             RegisterCode = "raptor02",
-            Species = "Velociraptor",
+            DinoSpecies = "Velociraptor",
             Age = 8,
             Type = "Carnivore",
             Zone = "East",
@@ -45,9 +45,9 @@ public class QueryService
         {
             Id = 3,
             Username = "trice03",
-            Name = "Tri",
+            DinoName = "Tri",
             RegisterCode = "trice03",
-            Species = "Triceratops",
+            DinoSpecies = "Triceratops",
             Age = 15,
             Type = "Herbivore",
             Zone = "North",
@@ -62,9 +62,9 @@ public class QueryService
         {
             Id = 4,
             Username = "brachio04",
-            Name = "Longneck",
+            DinoName = "Longneck",
             RegisterCode = "brachio04",
-            Species = "Brachiosaurus",
+            DinoSpecies = "Brachiosaurus",
             Age = 25,
             Type = "Herbivore",
             Zone = "West",
@@ -79,9 +79,9 @@ public class QueryService
         {
             Id = 5,
             Username = "spino05",
-            Name = "Spike",
+            DinoName = "Spike",
             RegisterCode = "spino05",
-            Species = "Spinosaurus",
+            DinoSpecies = "Spinosaurus",
             Age = 18,
             Type = "Carnivore",
             Zone = "South",
@@ -140,7 +140,7 @@ public class QueryService
     {
         var all = _query.GetAllDinosaurs(dinosaurs);
         return all
-            .Select(d => $"{d.Name.PadRight(20)}{d.RegisterCode.PadRight(15)}")
+            .Select(d => $"{d.DinoName.PadRight(20)}{d.RegisterCode.PadRight(15)}")
             .ToList();
     }
 }
