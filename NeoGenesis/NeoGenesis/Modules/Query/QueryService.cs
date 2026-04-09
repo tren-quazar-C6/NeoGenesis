@@ -161,5 +161,10 @@ public class QueryService
             .OrderBy(d => d.CreatedAt)
             .ToList();
     }
+    
+    public List<Dinosaur> GetDinosaursWoTracking()
+    {
+        return _query.GetDinosaursWoTrackNumber(dinosaurs);
+    }
 }
 

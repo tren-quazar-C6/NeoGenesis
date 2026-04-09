@@ -169,7 +169,11 @@ void QueryMethod(string queryOpt)
             helpers.Hold();
             break;
         case "12":
-            
+            Console.Clear();
+            Console.WriteLine("--- Dinosaurs Without Track Number ---\n");
+            List<Dinosaur> dinosaursWoTN = queryService.GetDinosaursWoTracking();
+            helpers.ShowDinosaurs(dinosaursWoTN);
+            helpers.Hold();
             break;
         case "13": 
             

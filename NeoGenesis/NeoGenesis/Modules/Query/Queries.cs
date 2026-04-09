@@ -66,4 +66,11 @@ public class Query
             .ToList();
     }
     
+    public List<Dinosaur> GetDinosaursWoTrackNumber(List<Dinosaur> dinosaurs)
+    {
+        return dinosaurs
+            .Where(d => d.TrackNumber == null)
+            .ToList();
+    }
+    
 }
