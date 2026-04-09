@@ -34,7 +34,7 @@ public class Helpers
     public void ShowDinosaurs(List<Dinosaur> dinosaurs)
     {
         Console.WriteLine("Id".PadRight(5) + "Username".PadRight(20) + "Age".PadRight(8) + "Type".PadRight(12) +
-                          "Zone".PadRight(10) + "Sector".PadRight(10) + "Tracknumber".PadRight(20) +
+                          "Zone".PadRight(10) + "Sector".PadRight(10) + "Tracknumber".PadRight(20) + "Address".PadRight(20) +
                           "CreatedAt".PadRight(10));
         Console.WriteLine(
             "-----------------------------------------------------------------------------------------------------------");
@@ -49,6 +49,7 @@ public class Helpers
                 $"{d.Zone ?? "N/A", -10}" +
                 $"{d.Sector ?? "N/A", -10}" +
                 $"{d.TrackNumber ?? "N/A", -20}" +
+                $"{d.Address ?? "N/A", -20}" +
                 $"{d.CreatedAt.ToString(), -10}" 
                 );
         }

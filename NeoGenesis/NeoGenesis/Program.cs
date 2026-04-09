@@ -176,7 +176,11 @@ void QueryMethod(string queryOpt)
             helpers.Hold();
             break;
         case "13": 
-            
+            Console.Clear();
+            Console.WriteLine("--- Dinosaurs Without Address ---\n");
+            List<Dinosaur> dinosaursWoAddress = queryService.GetDinosaursWoAddress();
+            helpers.ShowDinosaurs(dinosaursWoAddress);
+            helpers.Hold();
             break;
         case "14": 
             Console.Clear();

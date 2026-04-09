@@ -73,4 +73,11 @@ public class Query
             .ToList();
     }
     
+    public List<Dinosaur> GetDinosaursWoAddress(List<Dinosaur> dinosaurs)
+    {
+        return dinosaurs
+            .Where(d => d.Address == null)
+            .ToList();
+    }
+    
 }

@@ -166,5 +166,10 @@ public class QueryService
     {
         return _query.GetDinosaursWoTrackNumber(dinosaurs);
     }
+    
+    public List<Dinosaur> GetDinosaursWoAddress()
+    {
+        return _query.GetDinosaursWoAddress(dinosaurs);
+    }
 }
 
