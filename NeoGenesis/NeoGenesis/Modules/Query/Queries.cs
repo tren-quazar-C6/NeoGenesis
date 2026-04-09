@@ -16,6 +16,18 @@ public class Query
             .ToList();
     }
     
+    public List<Dinosaur> GetDinosaurByCode(List<Dinosaur> dinosaurs, string code)
+    {
+        return dinosaurs
+            .Where(d => d.RegisterCode == code)
+            .ToList();
+    }
+    
+    public List<string> GetCodes(List<Dinosaur> dinosaurs)
+    {
+        return dinosaurs.Select(x => x.RegisterCode).Distinct().ToList();
+    }
+    
     public List<Dinosaur> GetDinosaursByZone(List<Dinosaur> dinosaurs, string zone)
     {
         return dinosaurs

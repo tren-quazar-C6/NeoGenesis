@@ -21,7 +21,9 @@ Helpers helpers = new Helpers();
 void QueryMethod(string queryOpt)
 {
     QueryService queryService = new QueryService();
+    List<string> codes = queryService.GetCodes();
     List<string> zones = queryService.GetZones();
+    
     List<Dinosaur> dinosaursAll = queryService.GetAllDinosaurs();
     int cont = 0;
     int zoneOpt = 0;
@@ -54,6 +56,17 @@ void QueryMethod(string queryOpt)
             helpers.Hold();
             break;
         case "3":
+            Console.Clear();
+            Console.WriteLine("--- Registered Codes ---");
+            cont = 1;
+            foreach (var c in codes) { Console.WriteLine(cont + ". " + c); cont++; }
+            Console.Write($"Choose a code (1 - {cont - 1}): ");
+            int codeOpt = int.Parse(Console.ReadLine());
+            List<Dinosaur> dinosaurByCode = queryService.GetDinosaurByCode(codes[codeOpt - 1]);
+            Console.Clear();
+            Console.WriteLine($"Dinosaur with Registration Code '{codes[codeOpt - 1]}':\n");
+            helpers.ShowDinosaurs(dinosaurByCode);
+            helpers.Hold();
             break;
         case "4":
             Console.Clear();
@@ -121,20 +134,14 @@ void QueryMethod(string queryOpt)
             helpers.ShowDinosaursforReports(dinosaursForReports);
             helpers.Hold();
             break;
-        case "9":  
-            Console.Clear();
-            List<Dinosaur> orderedDinosaurs = queryService.OrderByCreationDate();
-            helpers.ShowDinosaurs(orderedDinosaurs);
-            helpers.Hold();
-            break;
-        case "10": break;
-        case "11":
+        case "9": 
             Console.Clear();
             Console.WriteLine("--- Dinosaur Count ---\n");
             helpers.CountDinosaurs(dinosaursAll);
             helpers.Hold();
+
             break;
-        case "12":
+        case "10": 
             Console.Clear();
             Console.WriteLine("--- Registered Zones ---");
             cont = 1;
@@ -147,10 +154,22 @@ void QueryMethod(string queryOpt)
             helpers.CountDinosaurs(dinosaursByZoneToCount);
             helpers.Hold();
             break;
-        case "13": break;
-        case "14": break;
+        case "11":
+
+            break;
+        case "12":
+            
+            break;
+        case "13": 
+            
+            break;
+        case "14": 
+            Console.Clear();
+            List<Dinosaur> orderedDinosaurs = queryService.OrderByCreationDate();
+            helpers.ShowDinosaurs(orderedDinosaurs);
+            helpers.Hold();
+            break;
         case "15": break;
-        case "16": break;
         case "0":  break;
     }
 }
@@ -174,14 +193,13 @@ string LINQMenu = "--- CONSULT DINOSAURS ---" +
                   "\n6. Filter by Age" +
                   "\n7. Filter by Type" +
                   "\n8. Show Name + Register Code" +
-                  "\n9. Order by Creation Date" +
-                  "\n10. Order by Species" +
-                  "\n11. Count total dinosaurs" +
-                  "\n12. Count by Zone" +
-                  "\n13. Count by Sector" +
-                  "\n14. Dinosaurs without TrackNumber" +
-                  "\n15. Dinosaurs without Address" +
-                  "\n16. Last registered dinosaurs" +
+                  "\n9. Count total dinosaurs" +
+                  "\n10. Count by Zone" +
+                  "\n11. Count by Sector" +
+                  "\n12. Dinosaurs without TrackNumber" +
+                  "\n13. Dinosaurs without Address" +
+                  "\n14. Last registered dinosaurs" +
+                  "\n15. Order by Species" +
                   "\n0. Back";
 
 // ── Main loop ───────────────────────────────────────────────────
