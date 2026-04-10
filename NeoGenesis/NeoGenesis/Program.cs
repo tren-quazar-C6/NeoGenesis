@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NeoGenesis.Infrastructure.Data;
 using NeoGenesis.Modules.Create;
+using NeoGenesis.Modules.Update;
+using NeoGenesis.Modules.Delete;
 
 // ── Conexión MySQL ──────────────────────────────────────────────────────
 var connectionString =
@@ -21,6 +23,8 @@ while (running)
     Console.WriteLine("║        NEOGENESIS PARK — MENÚ        ║");
     Console.WriteLine("╚══════════════════════════════════════╝");
     Console.WriteLine("  1. Registrar nuevo dinosaurio");
+    Console.WriteLine("  2. Actualizar dinosaurio");
+    Console.WriteLine("  3. Eliminar dinosaurio");
     Console.WriteLine("  0. Salir");
     Console.Write("\nOpción: ");
 
@@ -29,8 +33,16 @@ while (running)
     switch (option)
     {
         case "1":
-            var handler = new CreateHandler(db);
-            handler.Handle();
+            var createHandler = new CreateHandler(db);
+            createHandler.Handle();
+            break;
+        case "2":
+            var updateHandler = new UpdateHandler(db);
+            updateHandler.Handle();
+            break;
+        case "3":
+            var deleteHandler = new DeleteHandler(db);
+            deleteHandler.Handle();
             break;
         case "0":
             running = false;
