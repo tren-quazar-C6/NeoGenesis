@@ -2,8 +2,10 @@ using Microsoft.EntityFrameworkCore;
 using NeoGenesis.Entities;
 using NeoGenesis.Infrastructure.Data;
 using NeoGenesis.Modules.Create;
+using NeoGenesis.Modules.Update;
+using NeoGenesis.Modules.Delete;
 
-// ── Database connection ─────────────────────────────────────────
+// ── Conexión MySQL ──────────────────────────────────────────────────────
 var connectionString =
     "Server=204.168.211.73;Database=prueba_dino;User=root;Password=gWTeX0zTHgGQ6G1;";
 
@@ -246,9 +248,13 @@ while (!menuFlag)
             break;
         case "2":
             Console.Clear();
+            var updateHandler = new UpdateHandler(db);
+            updateHandler.Handle();
             break;
         case "3":
             Console.Clear();
+            var deleteHandler = new DeleteHandler(db);
+            deleteHandler.Handle();
             break;
         case "4":
             Console.Clear();
