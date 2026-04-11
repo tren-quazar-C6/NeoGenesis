@@ -82,6 +82,7 @@ public class CreateHandler
             DinoSpecies = dinoSpecies,
             Username = username,
             RegisterCode = registerCode,
+            Password = "12345",
             Age = age,
             Type = type,
             Zone      = zone,

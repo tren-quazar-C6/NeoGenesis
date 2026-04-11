@@ -22,11 +22,11 @@ public class UpdateValidator
     /// <summary>
     /// Valida que el identificador (sobre_nombre) sea único y no esté en uso por otro dinosaurio.
     /// </summary>
-    public string? ValidateUniqueUsername(string sobre_nombre, int dinosaurId)
+    public string? ValidateUniqueUsername(string username, int dinosaurId)
     {
-        bool exists = _db.Dinosaurs.Any(d => d.Username == sobre_nombre && d.Id != dinosaurId);
+        bool exists = _db.Dinosaurs.Any(d => d.Username == username && d.Id != dinosaurId);
         if (exists)
-            return $"El identificador '{sobre_nombre}' ya está registrado por otro dinosaurio.";
+            return $"El identificador '{username}' ya está registrado por otro dinosaurio.";
         
         return null;
     }

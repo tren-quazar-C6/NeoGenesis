@@ -22,6 +22,20 @@ public class MySqlDbContext : DbContext
 
             entity.HasIndex(d => d.Username).IsUnique();
             entity.HasIndex(d => d.RegisterCode).IsUnique();
+            
+            entity.HasKey(d => d.Id);
+
+            entity.Property(d => d.Address).HasColumnName("Address");
+            entity.Property(d => d.Zone).HasColumnName("Zone");
+            entity.Property(d => d.Sector).HasColumnName("Sector");
+            entity.Property(d => d.Type).HasColumnName("Type");
+            entity.Property(d => d.Age).HasColumnName("Age");
+            entity.Property(d => d.Password).HasColumnName("Password");
+            entity.Property(d => d.CreatedAt).HasColumnName("CreatedAt");
+            entity.Property(d => d.UpdatedAt).HasColumnName("UpdatedAt");
+
+            entity.HasIndex(d => d.Username).IsUnique();
+            entity.HasIndex(d => d.RegisterCode).IsUnique();
         });
     }
 }
