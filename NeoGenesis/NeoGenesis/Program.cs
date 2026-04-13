@@ -3,13 +3,22 @@ using NeoGenesis.Infrastructure.Data;
 using NeoGenesis.Modules.Create;
 using NeoGenesis.Modules.Update;
 using NeoGenesis.Modules.Delete;
+using Microsoft.Extensions.Configuration;
+
+// ── Configuration ───────────────────────────────────────────────
+var config = new ConfigurationBuilder()
+    .SetBasePath(AppContext.BaseDirectory)
+    .AddJsonFile("appsettings.json", optional: false)
+    .AddEnvironmentVariables()               // env vars override the file
+    .Build();
+
+var connectionString = config.GetConnectionString("MySql")
+                       ?? throw new InvalidOperationException("Connection string 'MySql' not found.");
 
 // ── Database connection ─────────────────────────────────────────
-var connectionString = "Server=204.168.211.73;Database=neogenesis;User=root;Password=gWTeX0zTHgGQ6G1;";
 var optionsBuilder = new DbContextOptionsBuilder<MySqlDbContext>();
 optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
-
-using var db = new MySqlDbContext(optionsBuilder.Options);
+using var db = new MySqlDbContext(optionsBuilder.Options);  // ← this was missing
 db.Database.EnsureCreated();
 
 // ── Services ────────────────────────────────────────────────────
